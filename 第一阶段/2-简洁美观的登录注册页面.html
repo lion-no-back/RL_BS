@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简洁美观的登录注册页面</title>
+    <link rel="stylesheet" href="./css/two.css">
+</head>
+<body>
+    <div class="container">
+        <div class="main_left active">
+            <h2>登录</h2>
+            <form action="#" class="form_login">
+                <input type="text" placeholder="请输入账号">
+                <input type="password" placeholder="请输入密码">
+                <p><a href="javascript:void(0)" class="forget_pwd">忘记密码?</a></p>
+            </form>
+            <div class="card">
+                <button class="btn_login">登录</button>
+            </div>
+            <div class="dotted">
+                <div class="Dot"></div>
+                <div class="dFont">其他方式登录</div>
+                <div class="Dot"></div>
+            </div>
+            <div class="other">
+                <div class="icoD"><a href="javascript:void(0)" class="icoQ">QQ</a></div>
+                <div class="icoD"><a href="javascript:void(0)" class="icoW">微信</a></div>
+                <div class="icoD"><a href="javascript:void(0)" class="icoF">人脸识别</a></div>
+            </div>
+        </div>
+        <div class="way">
+            <div class="change_way">
+                <button class="click" onclick="dclick(this)">注册</button>
+            </div>
+        </div>
+        <div class="main_right active">
+            <h2>注册</h2>
+            <form action="#" class="form_register">
+                <input type="text" placeholder="请输入邮箱/手机号">
+                <input type="password" placeholder="请输入密码">
+                <input type="password" placeholder="确认密码">
+            </form>
+            <div class="songhuashu">
+                <button class="btn_register">注册</button>
+            </div>
+        </div>
+    </div>
+    <script>
+         /* 鼠标点击切换按钮特效 */
+        var middlePart = document.querySelector('.way');
+        var leftPart = document.querySelector('.main_left');
+        var rightPart = document.querySelector('.main_right');
+ 
+        function dclick(e) {
+            if (e.textContent == '注册') {
+                middlePart.classList.add('pull');
+                leftPart.classList.add('hid');
+                rightPart.classList.add('dis');
+                e.textContent = '登录';
+            } else {
+                e.textContent = '注册';
+                middlePart.classList.remove('pull');
+                leftPart.classList.remove('hid');
+                rightPart.classList.remove('dis');
+            }
+        }
+ 
+        /* 鼠标点击登录按钮波纹特效 */
+        var card = document.querySelector('.card');
+        card.addEventListener('click',function(e){
+            
+            let x = e.clientX - this.offsetLeft - 360;
+            let y = e.clientY - this.offsetTop - 155;
+ 
+            let circle = document.createElement('span');
+            circle.style.left = x + 'px';
+            circle.style.top = y + 'px';
+            
+            this.appendChild(circle);
+ 
+            setInterval(function(){
+                circle.remove();
+            },1000)
+        }) 
+ 
+        /* 鼠标点击注册按钮波纹特效 */ 
+        var shs = document.querySelector('.songhuashu');
+        shs.addEventListener('click', function(e) {
+            let x = e.clientX - this.offsetLeft - 760;
+            let y = e.clientY - this.offsetTop - 155;
+ 
+            let circle = document.createElement('span');
+            circle.style.left = x + 'px';
+            circle.style.top = y + 'px';
+            
+            this.appendChild(circle);
+ 
+            setInterval(function(){
+                circle.remove();
+            },1000)
+        })
+    </script>
+</body>
+</html>
